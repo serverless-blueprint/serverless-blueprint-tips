@@ -19,31 +19,52 @@ describe("Tip Provider", () => {
         sinon.restore();
     });
 
-    it("should generate zero tips", () => {
+    it("should provide zero tips", () => {
         mock.expects("allTips").returns([]);
 
         let tips = new TipProvider().provideTips();
         expect(tips).to.be.empty;
     });
 
-    it("should generate a single tip with a tip-id", () => {
+    it("should provide a single tip with a tip-id", () => {
         mock.expects("allTips").returns([new Tip(1, "", "")]);
 
         let tips = new TipProvider().provideTips();
         expect(tips[0].id).to.equal(1);
     });
 
-    it("should generate a single tip with a tip-description", () => {
+    it("should provide a single tip with a tip-description", () => {
         mock.expects("allTips").returns([new Tip(0, "sample tip description", "")]);
 
         let tips = new TipProvider().provideTips();
         expect(tips[0].description).to.equal("sample tip description");
     });
 
-    it("should generate a single tip with a tip-reference", () => {
+    it("should provide a single tip with a tip-reference", () => {
         mock.expects("allTips").returns([new Tip(0, "", "http://sample.com")]);
 
         let tips = new TipProvider().provideTips();
         expect(tips[0].reference).to.equal("http://sample.com");
+    });
+
+    it("should provide atmost 2 tips from a randomly selected tips", () => {
+        let tip1 = new Tip(1, "tip-1", "");
+        let tip2 = new Tip(2, "tip-2", "");
+
+        mock.expects("allTips").returns([tip1, tip2]);
+
+        let tips = new TipProvider().provideTips();
+        expect(tips.length).to.be.lte(2);
+    });
+
+    it("should provide atmost 3 tips from a randomly selected tips", () => {
+        let tip1 = new Tip(1, "tip-1", "");
+        let tip2 = new Tip(2, "tip-2", "");
+        let tip3 = new Tip(3, "tip-3", "");
+
+        mock.expects("allTips").returns([tip1, tip2, tip3]);
+
+        let tips = new TipProvider().provideTips();
+        expect(tips.length).to.be.lte(3);
     });
 });
