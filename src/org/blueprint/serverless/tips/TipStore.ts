@@ -1,4 +1,4 @@
-import {Tip} from "./model/Tip";
+import {Tips} from "./model/Tips";
 
 export class TipStore {
 
@@ -14,7 +14,7 @@ export class TipStore {
         return TipStore.ref;
     }
 
-    allTips(): Tip[] {
+    allTips(): Tips {
         return null;
     }
 }

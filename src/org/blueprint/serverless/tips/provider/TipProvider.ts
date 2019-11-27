@@ -1,40 +1,27 @@
 import {TipStore} from "../TipStore";
-import {Tip} from "../model/Tip";
+import {Tips} from "../model/Tips";
 
 export class TipProvider {
     private tipStore: TipStore;
-    private readonly maxTipsToProvide: number;
+    private readonly upperCap: number;
 
     constructor() {
         this.tipStore = TipStore.instance();
-        this.maxTipsToProvide = 5;
+        this.upperCap = 5;
     }
 
-    provideTips(): Tip[] {
+    provideTips(): Tips {
         return this.nTips();
     }
 
     private nTips() {
         let allTips = this.allTips();
-        if (allTips.length === 0) return [];
-        return allTips;
+        if (allTips.isEmpty()) return allTips;
+
+        return allTips.randomTipsWith(this.upperCap);
     }
 
-    private randomTipsFrom(allTips) {
-        let tipCount = this.tipCountTobeReturnedFrom(allTips);
-        let tipsIds = Array.from({length: tipCount}, () => Math.floor(Math.random() * allTips.length + 1));
-
-        return allTips.filter(tip => tipsIds.indexOf(tip.id) != -1);
-    }
-
-    private tipCountTobeReturnedFrom(allTips) {
-        if (allTips.length < this.maxTipsToProvide)
-            return allTips.length;
-        else
-            return this.maxTipsToProvide;
-    }
-
-    private allTips() {
+    private allTips(): Tips {
         return this.tipStore.allTips();
     }
 }
