@@ -27,9 +27,23 @@ describe("Tip Provider", () => {
     });
 
     it("should generate a single tip with a tip-id", () => {
-        mock.expects("allTips").returns([new Tip(1)]);
+        mock.expects("allTips").returns([new Tip(1, "", "")]);
 
         let tips = new TipProvider().provideTips();
         expect(tips[0].id).to.equal(1);
+    });
+
+    it("should generate a single tip with a tip-description", () => {
+        mock.expects("allTips").returns([new Tip(0, "sample tip description", "")]);
+
+        let tips = new TipProvider().provideTips();
+        expect(tips[0].description).to.equal("sample tip description");
+    });
+
+    it("should generate a single tip with a tip-reference", () => {
+        mock.expects("allTips").returns([new Tip(0, "", "http://sample.com")]);
+
+        let tips = new TipProvider().provideTips();
+        expect(tips[0].reference).to.equal("http://sample.com");
     });
 });
