@@ -19,7 +19,10 @@ export class Tips {
     }
 
     atIndex(index: number) {
-        return this.tips[index];
+        if (index < this.count())
+            return this.tips[index];
+        else
+            return null;
     }
 
     randomTipsWith(anUpperCap: number) {

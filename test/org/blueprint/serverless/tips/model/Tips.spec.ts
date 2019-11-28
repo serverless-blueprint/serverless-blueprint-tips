@@ -23,4 +23,14 @@ describe("Tips", () => {
         let tips = new Tips([new Tip(1, "", "")]);
         expect(tips.count()).to.equal(1);
     });
+
+    it("should return a tip at index 0", () => {
+        let tips = new Tips([new Tip(1, "", "")]);
+        expect(tips.atIndex(0)).to.deep.equal(new Tip(1, "", ""));
+    });
+
+    it("should return null given index queried for tips does not exist", () => {
+        let tips = new Tips([new Tip(1, "", "")]);
+        expect(tips.atIndex(1)).to.be.null;
+    });
 });
