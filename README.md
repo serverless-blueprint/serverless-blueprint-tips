@@ -1,2 +1,2 @@
-# serverless-blueprint-tips
+# serverless-blueprint-tips [![Build Status](https://travis-ci.org/serverless-blueprint/serverless-blueprint-tips.svg?branch=master)](https://travis-ci.org/serverless-blueprint/serverless-blueprint-tips) [![codecov](https://codecov.io/gh/serverless-blueprint/serverless-blueprint-tips/branch/master/graph/badge.svg)](https://codecov.io/gh/serverless-blueprint/serverless-blueprint-tips)
 Generates tips every time a serverless component is generated
