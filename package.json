@@ -13,7 +13,8 @@
   "homepage": "https://github.com/serverless-blueprint/serverless-blueprint-tips#readme",
   "scripts": {
     "build": "tsc",
-    "test": "nyc --reporter=html --reporter=lcov --reporter=text mocha -r ts-node/register test/**/*.spec.ts"
+    "test": "nyc --reporter=html --reporter=lcov --reporter=text mocha -r ts-node/register test/**/*.spec.ts",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "dependencies": {
     "typescript": "^3.7.2"
