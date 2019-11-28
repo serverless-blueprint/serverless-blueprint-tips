@@ -50,4 +50,4 @@ A tip consists of the following -
 
 4. **Where are tips stored?**
 
-Tips are stored in a JSON file which is present under ```resources``` folder in source directory.
+Tips are stored in a JSON file present in ```resources``` folder under source directory.
