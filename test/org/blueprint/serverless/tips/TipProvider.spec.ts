@@ -54,7 +54,7 @@ describe("Tip Provider", () => {
 
         mock.expects("allTips").returns(new Tips([tip1, tip2]));
 
-        let tips = new TipProvider().provideTips();
+        let tips = new TipProvider(3).provideTips();
         expect(tips.count()).to.be.lte(2);
     });
 
@@ -65,7 +65,18 @@ describe("Tip Provider", () => {
 
         mock.expects("allTips").returns(new Tips([tip1, tip2, tip3]));
 
-        let tips = new TipProvider().provideTips();
+        let tips = new TipProvider(3).provideTips();
         expect(tips.count()).to.be.lte(3);
+    });
+
+    it("should provide 1 tip from a randomly selected tips given maximum number of tips is 1", () => {
+        let tip1 = new Tip(1, "tip-1", "");
+        let tip2 = new Tip(2, "tip-2", "");
+        let tip3 = new Tip(3, "tip-3", "");
+
+        mock.expects("allTips").returns(new Tips([tip1, tip2, tip3]));
+
+        let tips = new TipProvider(1).provideTips();
+        expect(tips.count()).to.be.equal(1);
     });
 });

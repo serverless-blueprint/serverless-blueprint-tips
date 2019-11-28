@@ -5,9 +5,9 @@ export class TipProvider {
     private tipStore: TipStore;
     private readonly upperCap: number;
 
-    constructor() {
+    constructor(maximumTips: number = 5) {
         this.tipStore = TipStore.instance();
-        this.upperCap = 5;
+        this.upperCap = maximumTips;
     }
 
     provideTips(): Tips {
