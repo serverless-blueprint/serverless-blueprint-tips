@@ -1,6 +1,7 @@
 import {Tips} from "./model/Tips";
-import {Tip} from "./model/Tip";
+import {TipResourceLocation} from "./TipResourceLocation";
 
+import {Tip} from "./model/Tip";
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -24,7 +25,7 @@ export class InMemoryTipStore {
     }
 
     private static loadAllTips() {
-        let filePath: string = path.join(__dirname, "./resources/tips.json");
+        let filePath: string = path.join(__dirname, TipResourceLocation.get());
         let tips: Tip[] = JSON.parse(fs.readFileSync(filePath, "utf8"));
         return new Tips(tips);
     }
