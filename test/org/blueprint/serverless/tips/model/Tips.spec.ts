@@ -36,14 +36,14 @@ describe("Tips", () => {
 
     it("should return tips with zero tip given an upper cap of 0 tip", () => {
         let tips = new Tips([new Tip(1, "description", "reference")]);
-        let randomTips = tips.randomTipsWith(0);
+        let randomTips = tips.randomMaximumTipsUpto(0);
 
         expect(randomTips.count()).to.equal(0);
     });
 
     it("should return tips with a single tip given an upper cap of 1 tip", () => {
         let tips = new Tips([new Tip(1, "description", "reference")]);
-        let randomTips = tips.randomTipsWith(1);
+        let randomTips = tips.randomMaximumTipsUpto(1);
 
         expect(randomTips.count()).to.equal(1);
         expect(tips.atIndex(0)).to.deep.equal(new Tip(1, "description", "reference"));
@@ -53,7 +53,7 @@ describe("Tips", () => {
         let tips = new Tips([new Tip(1, "description1", "reference1"),
                              new Tip(2, "description2", "reference2")]);
 
-        let randomTips = tips.randomTipsWith(3);
+        let randomTips = tips.randomMaximumTipsUpto(3);
 
         expect(randomTips.count()).to.be.lte(2)
     });
@@ -63,7 +63,7 @@ describe("Tips", () => {
                              new Tip(2, "description2", "reference2"),
                              new Tip(3, "description3", "reference3")]);
 
-        let randomTips = tips.randomTipsWith(3);
+        let randomTips = tips.randomMaximumTipsUpto(3);
 
         expect(randomTips.count()).to.be.lte(3)
     });

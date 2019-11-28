@@ -18,7 +18,7 @@ export class TipProvider {
         let allTips = this.allTips();
         if (allTips.isEmpty()) return allTips;
 
-        return allTips.randomTipsWith(this.upperCap);
+        return allTips.randomMaximumTipsUpto(this.upperCap);
     }
 
     private allTips(): Tips {

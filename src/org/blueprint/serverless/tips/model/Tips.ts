@@ -25,16 +25,16 @@ export class Tips {
             return null;
     }
 
-    randomTipsWith(anUpperCap: number) {
+    randomMaximumTipsUpto(limit: number) {
         let tipsIds = Array.from(
-            {length: this.maximumTipsAllowedWith(anUpperCap)},
+            {length: this.maximumTipsAllowedUpto(limit)},
             () => Math.floor(Math.random() * this.tips.length + 1)
         );
 
         return new Tips(this.tips.filter(tip => tipsIds.indexOf(tip.id) != -1));
     }
 
-    private maximumTipsAllowedWith(anUpperCap: number) {
-        return this.tips.length < anUpperCap ? this.tips.length : anUpperCap;
+    private maximumTipsAllowedUpto(limit: number) {
+        return this.tips.length < limit ? this.tips.length : limit;
     }
 }
