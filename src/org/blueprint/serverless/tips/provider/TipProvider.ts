@@ -1,12 +1,12 @@
-import {TipStore} from "../TipStore";
+import {InMemoryTipStore} from "../InMemoryTipStore";
 import {Tips} from "../model/Tips";
 
 export class TipProvider {
-    private tipStore: TipStore;
+    private tipStore: InMemoryTipStore;
     private readonly upperCap: number;
 
     constructor(maximumTips: number = 5) {
-        this.tipStore = TipStore.instance();
+        this.tipStore = InMemoryTipStore.instance();
         this.upperCap = maximumTips;
     }
 

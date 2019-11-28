@@ -4,9 +4,9 @@ import {Tip} from "./model/Tip";
 import * as fs from 'fs';
 import * as path from 'path';
 
-export class TipStore {
+export class InMemoryTipStore {
 
-    private static ref: TipStore;
+    private static ref: InMemoryTipStore;
 
     private tips: Tips;
 
@@ -14,13 +14,13 @@ export class TipStore {
     }
 
     static instance() {
-        if (TipStore.ref == null)
-            TipStore.ref = new TipStore();
+        if (InMemoryTipStore.ref == null)
+            InMemoryTipStore.ref = new InMemoryTipStore();
 
-        if (TipStore.ref.tips == null)
-            TipStore.ref.tips = TipStore.loadAllTips();
+        if (InMemoryTipStore.ref.tips == null)
+            InMemoryTipStore.ref.tips = InMemoryTipStore.loadAllTips();
 
-        return TipStore.ref;
+        return InMemoryTipStore.ref;
     }
 
     private static loadAllTips() {

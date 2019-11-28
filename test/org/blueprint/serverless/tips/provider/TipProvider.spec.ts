@@ -3,7 +3,7 @@ import * as sinon from 'sinon';
 
 import {TipProvider} from "../../../../../../src/org/blueprint/serverless/tips/provider/TipProvider";
 import {Tip} from "../../../../../../src/org/blueprint/serverless/tips/model/Tip";
-import {TipStore} from "../../../../../../src/org/blueprint/serverless/tips/TipStore";
+import {InMemoryTipStore} from "../../../../../../src/org/blueprint/serverless/tips/InMemoryTipStore";
 import {Tips} from "../../../../../../src/org/blueprint/serverless/tips/model/Tips";
 
 describe("Tip Provider", () => {
@@ -12,7 +12,7 @@ describe("Tip Provider", () => {
     let mock;
 
     beforeEach(() => {
-        tipStore = TipStore.instance();
+        tipStore = InMemoryTipStore.instance();
         mock = sinon.mock(tipStore);
     });
 
