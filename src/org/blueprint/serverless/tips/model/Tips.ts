@@ -3,8 +3,11 @@ import {Tip} from "./Tip";
 export class Tips {
     private readonly tips: Tip[];
 
-    constructor(tips: Tip[]) {
-        this.tips = tips;
+    constructor(tips: Tip[] = []) {
+        if (tips == null)
+            this.tips = [];
+        else
+            this.tips = tips;
     }
 
     isEmpty() {
